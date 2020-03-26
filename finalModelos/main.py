@@ -1,10 +1,18 @@
 from flask import Flask, request, render_template, make_response, session, url_for, redirect
 from flask_wtf import CSRFProtect
 import forms
+from flask_mysqldb import MySQL
 
 app= Flask(__name__)
 app.secret_key= 'la_clave_de_Pepito'
 csrf= CSRFProtect(app)
+
+app.config['MySQL_HOST']= 'localhost'
+app.config['MySQL_USER']= 'yira'
+app.config['MySQL_PASSWORD']= 'yira'
+app.config['MySQL_DB'] = 'pagina_juegos'
+app.config['MySQL_CURSORCLASS'] = 'DictCursor'
+mysql = MySQL(app)
 
 @app.route('/')
 def index():
@@ -19,6 +27,12 @@ def login():
 	loginForm= forms.LoginForm(request.form)
 	if (request.method=='POST' and loginForm.validate()):
 		session['user'] = loginForm.user.data
+		session['password']=loginForm.password.data
+		usuario = request.form['user']
+		password = request.form['passsword']
+		cur = mysql.connetion.cursor()
+		cur.execute('INSERT INTO pagina_juegos (usuario,password) VALUES (%s,%s)', (usuario,password))
+		mysql.connetion.commit()
 	if 'user' in session:
 		return redirect(url_for('index'))
 	return render_template('login.html', form=loginForm)
