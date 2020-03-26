@@ -1,0 +1,12 @@
+{% extends 'base/base1.html' %}
+{% block cabeza %}
+	<title> Vete a la galaga</title>
+    <script type="text/javascript" src="{{url_for('static', filename='js/juegoGalaga.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estiloGalaga.css')}}">
+{% endblock %}
+{% block contenido %}
+    <canvas  width="1100" height="100" id="ct"></canvas>
+    <canvas width="1100" height="600" id="lienzo" ></canvas>
+    <button id="jugar" onclick="darclick();">Jugar de nuevo</button> 
+    <button id="salir">--Salir--</button>
+{% endblock %}
