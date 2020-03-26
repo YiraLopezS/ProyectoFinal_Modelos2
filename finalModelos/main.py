@@ -1,13 +1,17 @@
 from flask import Flask, request, render_template, make_response, session, url_for, redirect
+from flask_wtf import CSRFProtect
 import forms
 
 app= Flask(__name__)
+app.secret_key= 'la_clave_de_Pepito'
+csrf= CSRFProtect(app)
 
 @app.route('/')
 def index():
 	if 'user' in session:
 		username = session['user']
 		print (username)
+	else: return redirect(url_for('login'))
 	return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -15,7 +19,8 @@ def login():
 	loginForm= forms.LoginForm(request.form)
 	if (request.method=='POST' and loginForm.validate()):
 		session['user'] = loginForm.user.data
-		
+	if 'user' in session:
+		return redirect(url_for('index'))
 	return render_template('login.html', form=loginForm)
 
 @app.route('/logout')
