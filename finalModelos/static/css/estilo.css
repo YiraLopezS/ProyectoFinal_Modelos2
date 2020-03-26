@@ -1,3 +1,71 @@
-body{
-	background-color: #ffb73a;
+body {
+    background-image: url(../img/fondo.jpg);
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-size: 20px;
+    
+}
+
+form {
+    width: 450px;
+    margin: auto;
+    background-color: #E5DDD3;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+h2 {
+    color: ghostwhite;
+    text-align: center;
+    margin: 0;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: ghostwhite;
+    text-align: center;
+    margin: 0;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+h3 {
+        color: ghostwhite;
+        text-align: center;
+        margin: 0;
+        font-size: 25px;
+        margin-bottom: 20px;
+}
+
+
+input, textarea { 
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+#boton { 
+    background-color: #410303;
+    color: #fff;
+    padding: 20px;
+    size: 50px;
+}
+
+#boton:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    form{
+        width: 100%;
+    }
 }
