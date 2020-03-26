@@ -1,13 +1,7 @@
 from flask import Flask, request, render_template, make_response, session, url_for, redirect
-from flask_wtf.csrf import CSRFProtect
-from config import DevelopmentConfig
 import forms
 
 app= Flask(__name__)
-app.config.from_object(DevelopmentConfig)
-CSRF = CSRFProtect()
-
-
 
 @app.route('/')
 def index():
@@ -24,12 +18,6 @@ def login():
 		
 	return render_template('login.html', form=loginForm)
 
-@app.route('/cookie')
-def cookie():
-	response= make_response(render_template('cookie.html'))
-	response.set_cookie('custome_cookie', 'pruebaCookie')
-	return response
-	
 @app.route('/logout')
 def logout():
 	if 'user' in session:
@@ -43,7 +31,18 @@ def juego1():
 @app.route('/juegoRun')
 def juego2():
 	return render_template('CovidRuner.html')
+	
+@app.route('/juegoSalt')
+def juego3():
+	return render_template('Saltarin.html')
+	
+@app.route('/juegoBuscF')
+def juego4():
+	return render_template('BuscF.html')
+	
+@app.route('/juegoGalaga')
+def juego5():
+	return render_template('Galaga.html')
 
 if __name__=='__main__':
-	CSRF.init_app(app)
-	app.run(port=8000)
+	app.run(debug=True,port=8000)
