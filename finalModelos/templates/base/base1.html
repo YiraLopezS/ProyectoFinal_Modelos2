@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+		{% block cabeza %}
+		{% endblock %}
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
+	</head>
+	<body>
+		{% block contenido %}
+		{% endblock %}
+		
+	</body>
+</html>
