@@ -2,8 +2,8 @@
 {% block cabeza %} <title>prueba</title> {% endblock %}
 
 {% block contenido %}
-	
-	<h2>Bienvenido a Frev</h2>
+	<input type="hidden" name="csrf_token" value="{{csrf_token()}}" />
+	<h3>Bienvenido a Frev</h3>
 	<div>
 		<button id="boton" type="submit" name="jugarCC" onclick="location.href='{{url_for('juego1')}}'">Jugar al Caza Calaveras</button>
 		<button id="boton" type="submit" name="jugarRC" onclick="location.href='{{url_for('juego2')}}'">Jugar al Runer del Coronavirus</button>

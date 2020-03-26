@@ -5,6 +5,7 @@
 	{% from "_macro.html" import render_field %}
 	
 	<form method="POST">
+		<input type="hidden" name="csrf_token" value="{{csrf_token()}}" />
 		{{render_field(form.user)}}
 		<br />
 		{{render_field(form.password)}}
